@@ -10,7 +10,7 @@ import UIKit
 import VisualRecognitionV3
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
@@ -26,9 +26,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
     }
-
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -48,16 +48,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             visualRecognition.classify(image: image) { (classifiedImages, error) in
                 
                 if let classes = classifiedImages?.result?.images.first?.classifiers.first?.classes {
-                
+                    
+                    self.classificationResults.removeAll()
+                    
                     for index in 1..<classes.count {
                         self.classificationResults.append(classes[index].className)
                     }
+                    
                     print(self.classificationResults)
                     
-                    if self.classificationResults.contains("hotdog") {
-                        self.navigationItem.title = "Hotdog!"
+                    if self.classificationResults.contains("hotdog") || self.classificationResults.contains("chili dog")  {
+                        DispatchQueue.main.async {
+                            self.navigationItem.title = "Hotdog!"
+                        }
                     } else {
-                        self.navigationItem.title = "Not Hotdog!"
+                        DispatchQueue.main.async {
+                            self.navigationItem.title = "Not Hotdog!"
+                        }
                     }
                     
                 }
@@ -69,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
     }
-
+    
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
         imagePicker.sourceType = .camera
