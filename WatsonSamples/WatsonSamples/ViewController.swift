@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let version = "2019-03-20"
     
     let imagePicker = UIImagePickerController()
+    var classificationResults: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let visualRecognition = VisualRecognition(version: version, apiKey: apiKey)
             visualRecognition.classify(image: image) { (classifiedImages, error) in
                 
-                print(classifiedImages)
+                if let classes = classifiedImages?.result?.images.first?.classifiers.first?.classes {
+                
+                    for index in 1..<classes.count {
+                        self.classificationResults.append(classes[index].className)
+                    }
+                    print(self.classificationResults)
+                    
+                    if self.classificationResults.contains("hotdog") {
+                        self.navigationItem.title = "Hotdog!"
+                    } else {
+                        self.navigationItem.title = "Not Hotdog!"
+                    }
+                    
+                }
                 
             }
             
