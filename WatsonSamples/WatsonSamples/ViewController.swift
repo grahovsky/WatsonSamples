@@ -32,6 +32,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePicker.delegate = self
         imageView.contentMode = .scaleAspectFit
+        
+        shareButton.isHidden = true
     }
     
     
@@ -41,6 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             cameraButton.isEnabled = false
             SVProgressHUD.show()
+            shareButton.isHidden = true
             
             imageView.image = image
             
@@ -68,6 +71,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     DispatchQueue.main.async {
                         self.cameraButton.isEnabled = true
                         SVProgressHUD.dismiss()
+                        self.shareButton.isHidden = false
                     }
                     
                     if self.classificationResults.contains("hotdog") || self.classificationResults.contains("chili dog")  {
@@ -106,6 +110,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func shareTapped(_ sender: UIButton) {
+        
+        let shareText = "My food is \(navigationItem.title!)"
+        
+        if let image = UIImage(named: "hotdogBackground") {
+            let activityViewContorller = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+            present(activityViewContorller, animated: true)
+        }
+        
     }
     
 }

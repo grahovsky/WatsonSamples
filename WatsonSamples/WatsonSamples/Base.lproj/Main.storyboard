@@ -18,10 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="17v-bs-SBw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotdogBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Npm-Is-RLC" userLabel="Static Hotdog Image">
+                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="W2i-Gy-uYb"/>
+                                    <constraint firstAttribute="width" constant="240" id="df1-bL-vZe"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="17v-bs-SBw" userLabel="Camera Image">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotdog" translatesAutoresizingMaskIntoConstraints="NO" id="Z9M-6I-plS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z9M-6I-plS">
                                 <rect key="frame" x="0.0" y="64" width="375" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="DVR-M1-cHS"/>
@@ -38,25 +45,28 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FRQ-aV-P2U"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.83529411764705885" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Z9M-6I-plS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2tb-23-YlE"/>
                             <constraint firstItem="K9X-5t-8pd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F6L-ni-sM0"/>
                             <constraint firstItem="Z9M-6I-plS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JgM-Zy-SVr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K9X-5t-8pd" secondAttribute="bottom" constant="95" id="TH5-dh-whe"/>
+                            <constraint firstItem="Npm-Is-RLC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vrd-co-rLo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z9M-6I-plS" secondAttribute="trailing" id="WlZ-dg-Lmv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="17v-bs-SBw" secondAttribute="bottom" id="baG-3X-hIP"/>
                             <constraint firstItem="17v-bs-SBw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cXS-iK-OdN"/>
                             <constraint firstItem="17v-bs-SBw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e0p-pN-71j"/>
+                            <constraint firstItem="Npm-Is-RLC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="o6r-gO-oC9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="17v-bs-SBw" secondAttribute="trailing" id="wnz-Ne-8Gw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -103,6 +113,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hotdog" width="641" height="173"/>
+        <image name="hotdogBackground" width="91.680000305175781" height="68.639999389648438"/>
     </resources>
 </document>
